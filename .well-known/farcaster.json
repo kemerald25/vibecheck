@@ -1,0 +1,19 @@
+{
+  "accountAssociation": {
+    "header": "eip191:0x...",
+    "payload": "...",
+    "signature": "..."
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Vibe Check",
+    "iconUrl": "https://vibecheck.vercel.app/icon.png",
+    "homeUrl": "https://vibecheck.vercel.app",
+    "imageUrl": "https://vibecheck.vercel.app/og.png",
+    "buttonTitle": "Find Your Match",
+    "splashImageUrl": "https://vibecheck.vercel.app/icon.png",
+    "splashBackgroundColor": "#0052FF",
+    "webhookUrl": "https://vibecheck.vercel.app/api/webhook"
+  }
+}
+
