@@ -4,7 +4,13 @@ import { supabase } from '@/lib/supabase'
 import { ProfileForm } from '@/components/profile/ProfileForm'
 
 export default async function ProfilePage() {
-  const user = await getCurrentUser()
+  let user
+  try {
+    user = await getCurrentUser()
+  } catch (error) {
+    redirect('/')
+  }
+
   if (!user) {
     redirect('/')
   }

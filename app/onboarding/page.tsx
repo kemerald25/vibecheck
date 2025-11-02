@@ -4,12 +4,17 @@ import { supabase } from '@/lib/supabase'
 import { ProfileForm } from '@/components/profile/ProfileForm'
 
 export default async function OnboardingPage() {
-  const user = await getCurrentUser()
+  let user
+  try {
+    user = await getCurrentUser()
+  } catch (error) {
+    redirect('/')
+  }
+
   if (!user) {
     redirect('/')
   }
 
-  // Get existing user data
   const { data: existingUser } = await supabase
     .from('users')
     .select('*')

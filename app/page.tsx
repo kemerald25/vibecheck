@@ -3,11 +3,14 @@ import { redirect } from 'next/navigation'
 import { getCurrentUser } from '@/lib/auth'
 
 export default async function Home() {
-  const user = await getCurrentUser()
-  
-  // Redirect authenticated users to discover
-  if (user) {
-    redirect('/discover')
+  try {
+    const user = await getCurrentUser()
+
+    if (user) {
+      redirect('/discover')
+    }
+  } catch (error) {
+    // cookies() is not available in this context, continue to render login page
   }
 
   return (

@@ -19,7 +19,13 @@ async function getMatches(fid: number) {
 }
 
 export default async function MatchesPage() {
-  const user = await getCurrentUser()
+  let user
+  try {
+    user = await getCurrentUser()
+  } catch (error) {
+    redirect('/')
+  }
+
   if (!user) {
     redirect('/')
   }

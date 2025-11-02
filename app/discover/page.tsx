@@ -17,7 +17,7 @@ async function getDiscoverableUsers(currentFid: number) {
     .select('swiped_fid')
     .eq('swiper_fid', currentFid)
 
-  const swipedFids = swipes?.map(s => s.swiped_fid) || []
+  const swipedFids = swipes?.map((s: any) => s.swiped_fid) || []
 
   // Get users in opposite space (or all if no preference)
   const spaceFilter = currentUser?.space === 'builder' ? 'creator' : 'builder'
@@ -56,7 +56,13 @@ async function getSwipeCount(currentFid: number) {
 }
 
 export default async function DiscoverPage() {
-  const user = await getCurrentUser()
+  let user
+  try {
+    user = await getCurrentUser()
+  } catch (error) {
+    redirect('/')
+  }
+
   if (!user) {
     redirect('/')
   }
